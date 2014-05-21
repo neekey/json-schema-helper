@@ -1,0 +1,19 @@
+{
+  "name": "json-schema-helper",
+  "version": "0.0.1",
+  "description": "helpers for json-schema.",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "mocha test/index.js -R spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.alibaba-inc.com:jsonnanny/json-schema-helper.git"
+  },
+  "keywords": [
+    "json-schema",
+    "helper"
+  ],
+  "author": "yinruo.nyj",
+  "license": "MIT"
+}

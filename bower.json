@@ -1,0 +1,21 @@
+{
+  "name": "json-schema-helper",
+  "version": "0.0.1",
+  "authors": [
+    "yinruo.nyj <yinruo.nyj@taobao.com>"
+  ],
+  "description": "helpers for json-schema.",
+  "main": "src/index.js",
+  "keywords": [
+    "json-schema",
+    "helper"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
