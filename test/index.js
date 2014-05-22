@@ -29,10 +29,11 @@ describe('json-schema-helper test', function(){
                 'properties',
                 '$ref',
                 'title',
-                'type',
                 'description',
                 'enum',
-                'definitions'
+                'format',
+                'definitions',
+                'default'
             ]
         );
         done();
