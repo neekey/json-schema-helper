@@ -75,6 +75,7 @@
         'maxLength',
         'minLength',
         'pattern',
+        'format',
 //        'additionalItems',
         'items',
         'maxItems',
@@ -138,6 +139,7 @@
             'type',
             'description',
             'enum',
+            'format',
 //            'allOf',
 //            'anyOf',
 //            'oneOf',
@@ -163,6 +165,7 @@
 //        '$schema': 'http://json-schema.org/draft-04/schema#',
         '$ref': '#',
         'id': '#',
+        'format': '',
         'multipleOf': 0,
         'maximum': 0,
         'exclusiveMaximum': true,
@@ -297,7 +300,7 @@
             allKeywords = allKeywords.concat( KEYWORDS_GROUP_BY_TYPE.any );
 
             // 去掉已经包含的关键词
-            for( key in types ){
+            for( key in schema ){
                 allKeywords.splice( allKeywords.indexOf( key ), 1 );
             }
 
@@ -331,6 +334,7 @@
                     case 'default':
                     case 'pattern':
                     case 'title':
+                    case 'format':
                 /**
                  * 数字类型
                  */
