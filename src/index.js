@@ -321,7 +321,7 @@
             // 若为关键词
             if( this.ifKeyword( path ) ){
 
-                var keyword = this.getCurrentKeyword( path );
+                var keyword = this.getCurrentKey( path );
                 switch( keyword ){
 
                 /**
