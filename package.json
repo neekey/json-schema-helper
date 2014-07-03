@@ -1,6 +1,6 @@
 {
   "name": "json-schema-helper",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "helpers for json-schema.",
   "main": "src/index.js",
   "scripts": {
