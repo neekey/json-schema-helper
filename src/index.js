@@ -175,7 +175,10 @@
         'minLength': 0,
         'pattern': '',
         'additionalItems': true,
-        'items': {},
+        'items': {
+            type: 'object',
+            title: '这是数组的某个成员'
+        },
         'maxItems': 0,
         'minItems': 0,
         'uniqueItems': true,
@@ -191,7 +194,11 @@
         'description': '添加描述',
         'enum': [],
         'default': '这是默认值',
-        'allOf': [],
+        'allOf': [
+            {
+                '$ref': '#'
+            }
+        ],
         'anyOf': [],
         'oneOf': [],
         'not': {},
@@ -202,7 +209,7 @@
          */
         'schema': {
             type: 'object',
-            description: '这是描述'
+            title: '这是字段描述'
         }
     };
 
@@ -281,30 +288,36 @@
             var allKeywords = [];
             var key;
 
-            // 类型可能是数组
-            var types = [];
-            if( Utils.isString( schema.type ) ){
-                types.push( schema.type );
+            // 若schema中包含$ref字段，则不包含任何字段
+            if( schema.$ref ){
+                return [];
             }
             else {
-                types = types.concat( schema.type );
+                // 类型可能是数组
+                var types = [];
+                if( Utils.isString( schema.type ) ){
+                    types.push( schema.type );
+                }
+                else {
+                    types = types.concat( schema.type );
+                }
+
+                // 先获取当前类型会需要到的关键字
+                for( key in types ){
+                    allKeywords = allKeywords.concat( KEYWORDS_GROUP_BY_TYPE[ types[ key ] ] || [] )
+                }
+
+                // 添加core和通用
+                allKeywords = allKeywords.concat( KEYWORDS_GROUP_BY_TYPE.core );
+                allKeywords = allKeywords.concat( KEYWORDS_GROUP_BY_TYPE.any );
+
+                // 去掉已经包含的关键词
+                for( key in schema ){
+                    allKeywords.splice( allKeywords.indexOf( key ), 1 );
+                }
+
+                return allKeywords;
             }
-
-            // 先获取当前类型会需要到的关键字
-            for( key in types ){
-                allKeywords = allKeywords.concat( KEYWORDS_GROUP_BY_TYPE[ types[ key ] ] || [] )
-            }
-
-            // 添加core和通用
-            allKeywords = allKeywords.concat( KEYWORDS_GROUP_BY_TYPE.core );
-            allKeywords = allKeywords.concat( KEYWORDS_GROUP_BY_TYPE.any );
-
-            // 去掉已经包含的关键词
-            for( key in schema ){
-                allKeywords.splice( allKeywords.indexOf( key ), 1 );
-            }
-
-            return allKeywords;
         },
 
         /**
