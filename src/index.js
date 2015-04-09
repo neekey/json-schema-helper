@@ -97,21 +97,24 @@
         'oneOf',
 //        'not',
         'definitions',
-        'default'
+        'default',
+        'x-format'
     ];
 
     var KEYWORDS_GROUP_BY_TYPE = {
         string: [
             'pattern',
             'maxLength',
-            'minLength'
+            'minLength',
+            'x-format'
         ],
         number: [
 //            'multipleOf',
             'maximum',
             'exclusiveMaximum',
             'minimum',
-            'exclusiveMinimum'
+            'exclusiveMinimum',
+            'x-format'
         ],
         array: [
 //            'additionalItems',
@@ -166,6 +169,7 @@
         '$ref': '#',
         'id': '#',
         'format': '',
+        'x-format': '',
         'multipleOf': 0,
         'maximum': 0,
         'exclusiveMaximum': true,
@@ -348,6 +352,7 @@
                     case 'pattern':
                     case 'title':
                     case 'format':
+                    case 'x-format':
                 /**
                  * 数字类型
                  */
